@@ -5,8 +5,10 @@
   "main": "lib/index.js",
   "scripts": {
     "start": "node .",
-    "build": "tsc --project tsconfig.json && tsc-alias -p tsconfig.json",
-    "dev": "ts-node-dev -r tsconfig-paths/register ./src/index.ts",
+    "compile": "tsc --project tsconfig.build.json && tsc-alias -p tsconfig.build.json",
+    "dtsc": "dtsc --project tsconfig.dtsc.json",
+    "build": "npm run compile && npm run dtsc",
+    "dev": "ts-node-dev -r tsconfig-paths/register ./src/test.ts",
     "pub": "npm publish --access public",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -27,6 +29,7 @@
   "homepage": "https://github.com/lc-cn/ts-dev-template#readme",
   "devDependencies": {
     "@types/node": "latest",
+    "dtsc": "^2.2.3",
     "ts-node-dev": "latest",
     "tsc-alias": "latest",
     "tsconfig-paths": "latest",
